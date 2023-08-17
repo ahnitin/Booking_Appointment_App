@@ -1,5 +1,6 @@
 var form = document.getElementById('my-form');
 form.addEventListener('submit',addItem);
+let i=1;
 function addItem(e)
 {
     e.preventDefault();
@@ -13,9 +14,13 @@ function addItem(e)
     //console.log(name1,email1)
     else
     {
-    localStorage.setItem("Name:",name1);
-    localStorage.setItem("email-add",email1);
-    console.log(localStorage.getItem("Name:"));
-    console.log(localStorage.getItem("email-add"));
+    i = i.toString();
+    let key1 = "Name"+i;
+    let key2 = "Email"+i;   
+    localStorage.setItem(key1,name1);
+    localStorage.setItem(key2,email1);
+    console.log(localStorage.getItem(key1));
+    console.log(localStorage.getItem(key2));
+    i++;
     }
 }
