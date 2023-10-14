@@ -1,54 +1,69 @@
-var form = document.getElementById('my-form');
-const userList = document.querySelector('#users');
-form.addEventListener('submit',addItem);
-let i=1;
-function addItem(e)
-{
-    e.preventDefault();
-    var name1 = document.getElementById('name').value;
-    var email1 = document.getElementById('email').value;
-    if(name1 == "" || email1 == "")
-    {
-        alert("please enter all the fields");
+const express = require("express");
+const app = express();
+const path = require("path");
+const Parser = require("body-parser");
+const db = require("mysql2");
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize('happy_world', 'root', 'good@123', {
+  dialect: 'mysql',
+  host: 'localhost'
+});
+const UserData = sequelize.define('userdata', {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    username: {
+    type: Sequelize.STRING,
+    allowNull: false
+    },
+    emailid: {
+      type: Sequelize.STRING,
+      allowNull: false
     }
-    //console.log(name1,email1)
-    else
-    {
-    //e.preventDefault();
-    i = i.toString()
-    let obj = {
-        Name : name1,
-        email : email1
-    };
-    let key = "obj"+i;
-    let value = JSON.stringify(obj);
-    localStorage.setItem(key,value);
-    console.log(JSON.parse(localStorage.getItem((key))))
-    const li = document.createElement('li');
-    li.appendChild(document.createTextNode(`${name1}: ${email1}`));
-    var deleteBtn = document.createElement('button');
-    deleteBtn.className = 'btn delete';
-    deleteBtn.appendChild(document.createTextNode('DELETE'));
-    
-    li.appendChild(deleteBtn);
-    userList.appendChild(li);
-    //var itemlist = document.getElementById('items');
-    //itemlist.addEventListener('click',removeItem);
-    //console.log(itemlist);
-    deleteBtn.addEventListener('click',removeItem);
-    i++;
+  });
+
+var fullstack = document.getElementById(fullstack)
+fullstack.onclick =(event) =>{
+    event.preventDefault();
+    let name = name.value;
+    let email = email.value;
+
+    let obj ={
+        name,
+        email
     }
+    UserData.
 }
-var t =1
-function removeItem(e)
+
+
+app.use(Parser.urlencoded({extended: false}));
+
+app.use("/add-product",(req, res, next)=>{
+
+    res.sendFile(path.join(__dirname,"index.html"));
+});
+
+app.use("/product",(req,res,next)=>{
+    console.log(req.body);
+    res.redirect("/add-product")
+})
+app.use("/",(req,res,next)=>{
+    res.status(404).send("<h1>PAGE NOT FOUND<h1>")
+})
+app.listen(4000);
+let full = document.getElementById("full");
 {
-        if(confirm("Are you sure"))
-        {
+    event.preventDefault();
+    let name = name.value;
+    let email = email.value;
 
-            localStorage.removeItem("obj"+t)
-            var li = e.target.parentElement;
-            userList.removeChild(li);
-            t++;
-        }
-
+    let obj ={
+        name,
+        email
+    }
+    console.log(obj)
 }

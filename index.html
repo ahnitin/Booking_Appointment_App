@@ -9,17 +9,18 @@
   </head>
   <body>
     <header>
-      <h1>JS For Beginners</h1>
+      <h1>Book Appointment</h1>
     </header>
-
+    
     <section class="container">
-      <form id="my-form">
+    <main>
+        <form action="/product" method="POST">
         <h1>Add User</h1>
-          <label for="name">Name:</label>
-          <input type="text" id="name">
-          <label for="email">Email:</label>
-          <input type="text" id="email">
-        <input class="btn" type="submit" value="Submit">
+        <label for="name">Name:</label>
+        <input type="text" placeholder="username" id="name" name="username">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <button type="btn" class="btn btn dark" id="fullstack"> Submit</button>
       </form>
 
       <ul id="users"></ul>
@@ -29,8 +30,9 @@
         <li class="item">Item 2</li>
         <li class="item">Item 3</li>
       </ul> -->
+    </main>
     </section>
-    
+
 
     <script src="main.js"></script>
   </body>
